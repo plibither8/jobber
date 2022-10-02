@@ -83,6 +83,7 @@ const boards: Record<string, (company: string) => Promise<Job[]>> = {
       (await getJobElements(
         `https://boards.greenhouse.io/embed/job_board?for=${company}`
       )) ?? (await getJobElements(`https://boards.greenhouse.io/${company}`));
+    if (!jobElements?.length) throw Error(`Company ${company} not found`);
     return jobElements.map((element) => {
       const anchor = element.querySelector("a");
       let link = anchor.getAttribute("href");
