@@ -129,6 +129,7 @@ app.get("/:board/:company", async (ctx) => {
   if (!getJobs) return ctx.text("Job board not supported", 400);
   try {
     const jobs = await getJobs(company);
+    jobs.sort((a, b) => a.title.localeCompare(b.title));
     return ctx.json(jobs);
   } catch (err) {
     return ctx.text(err.message, 500);
