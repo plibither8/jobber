@@ -1,9 +1,7 @@
 import { Hono } from "hono";
 import { HTMLElement, parse } from "node-html-parser";
 
-interface Env {}
-
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono();
 
 interface Job {
   title: string;
