@@ -1,13 +1,52 @@
-# 🍔 workers-bun-hono-template
+# 💼 [jobber](https://jobber.mihir.ch)
 
-> A template for creating a [Cloudflare Workers](https://workers.cloudflare.com/) project with [Bun](https://bun.sh/) and [Hono](https://honojs.dev).
+> Super simple API to fetch job listings from popular job boards (Ashby, Greenhouse, Lever, BambooHR)
 
 ## Usage
+
+**Base URL**: [`https://jobber.mihir.ch`](https://jobber.mihir.ch)
+
+### `GET /:jobBoard/:companySlug`
+
+#### Params
+
+| Name          | Type     | Description                     |
+| ------------- | -------- | ------------------------------- |
+| `jobBoard`    | `string` | Job board to fetch jobs from.   |
+| `companySlug` | `string` | Company slug to fetch jobs for. |
+
+##### Supported job boards
+
+- `ashby`
+- `greenhouse`
+- `lever`
+- `bamboohr`
+
+#### Response
+
+```json
+[
+  {
+    "title": "Customer Success Manager",
+    "location": "Americas",
+    "link": "https://jobs.ashbyhq.com/linear/5a3e5c82-7468-49eb-bb2d-d5f9c3d03041"
+  },
+  {
+    "title": "Lead Product Designer",
+    "location": "Americas",
+    "link": "https://jobs.ashbyhq.com/linear/f30b8aee-b810-4262-9543-ab0987cb3c96"
+  }
+]
+```
+
+**Example**: [`https://jobber.mihir.ch/ashby/linear`](https://jobber.mihir.ch/ashby/linear)
+
+## Development
 
 **Preqrequisites:**
 
 1. [Wrangler](https://developers.cloudflare.com/workers/wrangler/get-started/#install)
-2. Bun (Node.js runtime)
+2. [Recommended] Bun (Node.js runtime)
 
 **Install and setup:**
 
